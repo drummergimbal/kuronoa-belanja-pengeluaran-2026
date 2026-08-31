@@ -13,6 +13,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
@@ -40,6 +41,7 @@ import com.kuronoa.expensetracker.KuronoaApp
 import com.kuronoa.expensetracker.R
 import com.kuronoa.expensetracker.util.AppViewModelFactory
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SettingsScreen(app: KuronoaApp) {
     val viewModel: SettingsViewModel = viewModel(factory = AppViewModelFactory(app) { SettingsViewModel.factory(it) })
@@ -103,7 +105,7 @@ fun SettingsScreen(app: KuronoaApp) {
                         Text(
                             it,
                             color = if (testState.success == true) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.error,
-                            style = MaterialTheme.typography.bodyMedium
+                        style = MaterialTheme.typography.bodyMedium
                         )
                     }
                 }
