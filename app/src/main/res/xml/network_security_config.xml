@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Semua koneksi wajib HTTPS (URL Apps Script Web App selalu https://script.google.com/...).
+  Ini membantu memastikan "koneksi stabil & aman" — tidak ada fallback ke HTTP polos.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>
