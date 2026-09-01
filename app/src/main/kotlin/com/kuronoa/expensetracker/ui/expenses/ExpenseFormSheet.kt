@@ -10,6 +10,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CalendarMonth
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.Button
 import androidx.compose.material3.DatePicker
 import androidx.compose.material3.DatePickerDialog
@@ -57,6 +58,9 @@ fun ExpenseFormContent(
     var buktiTransaksi by remember { mutableStateOf(initial.buktiTransaksi) }
     var pembayaran by remember { mutableStateOf(initial.pembayaran.ifBlank { ExpenseItem.PEMBAYARAN_OPTIONS.first() }) }
     var jumlahText by remember { mutableStateOf(if (initial.jumlah > 0) initial.jumlah.toLong().toString() else "") }
+    var nilaiTransferText by remember {
+        mutableStateOf(initial.nilaiTransfer?.takeIf { it > 0 }?.toLong()?.toString() ?: "")
+    }
     var keterangan by remember { mutableStateOf(initial.keterangan) }
 
     var showDatePicker by remember { mutableStateOf(false) }
@@ -91,6 +95,21 @@ fun ExpenseFormContent(
             options = ExpenseItem.KATEGORI_OPTIONS,
             selected = kategori,
             onSelected = { kategori = it }
+        )
+
+        OutlinedTextField(
+            value = nilaiTransferText,
+            onValueChange = { input -> nilaiTransferText = input.filter { it.isDigit() } },
+            label = { Text("Nilai Transfer (Rp, opsional)") },
+            keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(keyboardType = KeyboardType.Number),
+            trailingIcon = {
+                if (nilaiTransferText.isNotEmpty()) {
+                    IconButton(onClick = { nilaiTransferText = "" }) {
+                        Icon(Icons.Filled.Close, contentDescription = "Hapus nilai transfer")
+                    }
+                }
+            },
+            modifier = Modifier.fillMaxWidth()
         )
 
         OutlinedTextField(
@@ -155,6 +174,7 @@ fun ExpenseFormContent(
                         initial.copy(
                             tanggal = tanggal,
                             kategori = kategori,
+                            nilaiTransfer = nilaiTransferText.let { CurrencyFormatter.parse(it) }.takeIf { it > 0 },
                             uraian = uraian.trim(),
                             lokasi = lokasi,
                             supplier = supplier.trim(),

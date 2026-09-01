@@ -105,7 +105,7 @@ fun SettingsScreen(app: KuronoaApp) {
                         Text(
                             it,
                             color = if (testState.success == true) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.error,
-                        style = MaterialTheme.typography.bodyMedium
+                            style = MaterialTheme.typography.bodyMedium
                         )
                     }
                 }

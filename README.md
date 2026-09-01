@@ -11,7 +11,8 @@ paham coding.
 
 ## Fitur
 
-- **Input, edit, hapus** transaksi pengeluaran, langsung tersimpan offline.
+- **Input, edit, hapus** transaksi pengeluaran (termasuk kolom **Nilai Transfer**), langsung tersimpan offline.
+- **Ekspor ke PDF**: laporan pengeluaran per bulan (tabel + total) bisa diekspor jadi file PDF langsung dari tab Pengeluaran, lalu dibagikan/disimpan lewat aplikasi lain (WhatsApp, Drive, viewer PDF, dll).
 - **Sinkronisasi 2 arah** ke Google Sheets lewat jembatan Apps Script Web App
   (data tetap 100% milik Anda, tersimpan di Google Sheets Anda sendiri).
 - **Koneksi stabil**: retry otomatis dgn exponential backoff di level HTTP
@@ -72,4 +73,4 @@ pilih folder ini → biarkan Android Studio membuat `gradlew` otomatis lewat
 
 ---
 
-_Kuronoa Expense Tracker v1.0.0 — by drummergimbal_
+_Kuronoa Expense Tracker v1.1.0 — by drummergimbal_

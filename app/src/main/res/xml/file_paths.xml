@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Dipakai oleh FileProvider (lihat AndroidManifest.xml) supaya file PDF hasil
+    ekspor (disimpan di cacheDir/exports) bisa dibagikan dengan aman lewat
+    Intent ke aplikasi lain (viewer PDF, WhatsApp, Drive, dll) tanpa membuka
+    akses penuh ke seluruh penyimpanan aplikasi.
+-->
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <cache-path name="exports" path="exports/" />
+</paths>
